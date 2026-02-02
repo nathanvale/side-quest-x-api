@@ -80,9 +80,7 @@ jobs:
         uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6.2.0
         with:
           node-version: '24' # Node 24 includes npm 11.6+ (required for OIDC trusted publishing)
-          # NOTE: Do NOT set registry-url here. It creates .npmrc with NODE_AUTH_TOKEN
-          # placeholder that overrides npm's OIDC auto-detection. Auth is handled by
-          # changesets-publish.sh (NPM_TOKEN fallback) or OIDC (trusted publishing).
+          registry-url: 'https://registry.npmjs.org/'
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
