@@ -15,6 +15,16 @@ set -euo pipefail
 STAGE_DIR=".mcpb-stage"
 OUTPUT="x-api.mcpb"
 
+echo "==> Syncing manifest.json version from package.json..."
+VERSION=$(node -p "require('./package.json').version")
+node -e "
+  const fs = require('fs');
+  const m = JSON.parse(fs.readFileSync('manifest.json', 'utf8'));
+  m.version = '${VERSION}';
+  fs.writeFileSync('manifest.json', JSON.stringify(m, null, '\t') + '\n');
+"
+echo "    manifest.json version → ${VERSION}"
+
 echo "==> Building project..."
 bun run build
 
