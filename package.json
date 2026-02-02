@@ -8,14 +8,21 @@
 	},
 	"license": "MIT",
 	"type": "module",
-	"main": "./dist/index.js",
-	"types": "./dist/index.d.ts",
+	"main": "./dist/src/index.js",
+	"types": "./dist/src/index.d.ts",
 	"exports": {
 		".": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/index.js"
+			"types": "./dist/src/index.d.ts",
+			"import": "./dist/src/index.js"
+		},
+		"./mcp": {
+			"types": "./dist/mcp/index.d.ts",
+			"import": "./dist/mcp/index.js"
 		},
 		"./package.json": "./package.json"
+	},
+	"bin": {
+		"x-api-mcp": "./dist/mcp/index.js"
 	},
 	"files": [
 		"dist/**",
@@ -25,16 +32,21 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/nathanvale/x-api.git"
+		"url": "git+https://github.com/nathanvale/side-quest-x-api.git"
 	},
 	"bugs": {
-		"url": "https://github.com/nathanvale/x-api/issues"
+		"url": "https://github.com/nathanvale/side-quest-x-api/issues"
 	},
-	"homepage": "https://github.com/nathanvale/x-api#readme",
+	"homepage": "https://github.com/nathanvale/side-quest-x-api#readme",
 	"keywords": [
+		"twitter",
+		"x",
+		"api",
+		"mcp",
+		"tweets",
+		"read-only",
 		"typescript",
-		"bun",
-		"biome"
+		"bun"
 	],
 	"engines": {
 		"node": ">=22.20"
@@ -80,7 +92,9 @@
 		"version:pre": "changeset version",
 		"watch:types": "tsc -p tsconfig.eslint.json --noEmit --watch"
 	},
-	"dependencies": {},
+	"dependencies": {
+		"@side-quest/core": "^0.0.0"
+	},
 	"devDependencies": {
 		"@arethetypeswrong/cli": "^0.18.2",
 		"@biomejs/biome": "^2.3.7",
