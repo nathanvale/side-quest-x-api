@@ -55,6 +55,15 @@ else
   # npm CLI auto-detects OIDC from GitHub Actions when id-token: write is set
   annotate notice "No NPM_TOKEN; relying on OIDC trusted publishing."
   annotate notice "Ensure trusted publisher is configured at: npmjs.com → package Settings → Trusted Publisher"
+
+  # Remove any .npmrc files that setup-node or changesets/action may have created.
+  # These contain a dummy NODE_AUTH_TOKEN placeholder that overrides npm's built-in
+  # OIDC auto-detection. npm must handle auth itself for trusted publishing to work.
+  rm -f "$HOME/.npmrc"
+  if [[ -n "${NPM_CONFIG_USERCONFIG:-}" ]]; then
+    rm -f "$NPM_CONFIG_USERCONFIG"
+  fi
+  unset NODE_AUTH_TOKEN 2>/dev/null || true
 fi
 
 annotate notice "Building before publish."
