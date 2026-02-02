@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1
+
+### Patch Changes
+
+- [#2](https://github.com/nathanvale/side-quest-x-api/pull/2) [`63cc8c2`](https://github.com/nathanvale/side-quest-x-api/commit/63cc8c29e8787dadf3a50aa2a097d62514a73f54) Thanks [@nathanvale](https://github.com/nathanvale)! - Add threads and timelines keywords to package metadata
+
 ## 0.1.0
 
 ### Minor Changes
