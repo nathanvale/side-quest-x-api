@@ -22,7 +22,7 @@
 		"./package.json": "./package.json"
 	},
 	"bin": {
-		"x-api-mcp": "./dist/mcp/index.js"
+		"x-api-mcp": "dist/mcp/index.js"
 	},
 	"files": [
 		"dist/**",
