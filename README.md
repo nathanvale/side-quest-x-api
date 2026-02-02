@@ -27,9 +27,13 @@ That's it. The MCP tools are now available in Claude Code.
 | `x_get_replies` | Get replies to a specific tweet |
 | `x_search` | Search recent tweets (7-day window) |
 
-## Alternative Setup
+## Claude Desktop
 
-### Claude Desktop
+### One-Click Install (Desktop Extension)
+
+Download the latest `x-api.mcpb` from [GitHub Releases](https://github.com/nathanvale/side-quest-x-api/releases) and double-click to install. Claude Desktop will prompt you for your Bearer Token.
+
+### Manual Setup
 
 Add to `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS):
 

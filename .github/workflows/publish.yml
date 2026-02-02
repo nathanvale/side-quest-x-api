@@ -185,6 +185,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Attach Desktop Extension to release
+        if: steps.intent.outputs.value == 'auto' && steps.changesets.outputs.published == 'true'
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          TAG="v${VERSION}"
+          echo "Building Desktop Extension (.mcpb)..."
+          bun run pack:desktop
+          echo "Uploading x-api.mcpb to release ${TAG}..."
+          gh release upload "${TAG}" x-api.mcpb --clobber
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       # ============================================================
       # Build & Git Config (for version/publish/snapshot)
       # ============================================================

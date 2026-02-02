@@ -37,6 +37,10 @@ report.*.json
 .parcel-cache/g
 .pack/
 
+# Desktop Extension build artifacts
+.mcpb-stage/
+*.mcpb
+
 # OS
 .DS_Store
 

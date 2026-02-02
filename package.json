@@ -73,6 +73,7 @@
 		"lint:fix": "biome lint --write .",
 		"lint:scripts": "shellcheck .github/scripts/*.sh",
 		"lint:workflows": "actionlint -color -verbose",
+		"pack:desktop": "bash scripts/pack-desktop-extension.sh",
 		"pack:dry": "mkdir -p .pack && bun pm pack --destination .pack --ignore-scripts && ls -lah .pack && tar -tf .pack/*.tgz | sort | sed 's/^/ - /'",
 		"pre:enter:beta": "changeset pre enter beta",
 		"pre:enter:next": "changeset pre enter next",
