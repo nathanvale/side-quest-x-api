@@ -56,20 +56,27 @@ else
   annotate notice "No NPM_TOKEN; relying on OIDC trusted publishing."
   annotate notice "Ensure trusted publisher is configured at: npmjs.com → package Settings → Trusted Publisher"
 
-  # Remove any .npmrc files that setup-node or changesets/action may have created.
-  # These contain a dummy NODE_AUTH_TOKEN placeholder that overrides npm's built-in
-  # OIDC auto-detection. npm must handle auth itself for trusted publishing to work.
+  # Clean up any .npmrc files that changesets/action may have created.
+  # OIDC requires NO auth token — npm auto-detects OIDC from GitHub Actions
+  # when id-token: write permission is set and NODE_AUTH_TOKEN is absent.
+  # See: https://dev.to/zhangjintao/from-deprecated-npm-classic-tokens-to-oidc-trusted-publishing
   rm -f "$HOME/.npmrc"
   if [[ -n "${NPM_CONFIG_USERCONFIG:-}" ]]; then
     rm -f "$NPM_CONFIG_USERCONFIG"
+    unset NPM_CONFIG_USERCONFIG || true
   fi
-  unset NODE_AUTH_TOKEN 2>/dev/null || true
+  unset NODE_AUTH_TOKEN || true
 fi
 
 annotate notice "Building before publish."
 bun run build
 
 annotate notice "Attempting publish via 'bun run release'."
+
+# Debug: show npm config for troubleshooting auth issues
+echo "::group::npm config"
+npm config list
+echo "::endgroup::"
 
 # Run the project's publish script (configured to call `changeset publish`)
 bun run release
