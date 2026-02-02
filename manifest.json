@@ -1,0 +1,31 @@
+{
+	"manifest_version": "0.2",
+	"name": "@side-quest/x-api",
+	"version": "0.1.1",
+	"description": "Read-only Twitter/X API v2 — tweets, threads, timelines, user profiles. Get tweets, threads, timelines, search results, user profiles, and replies.",
+	"author": {
+		"name": "Nathan Vale",
+		"url": "https://github.com/nathanvale"
+	},
+	"server": {
+		"type": "node",
+		"entry_point": "./dist/mcp/index.js",
+		"mcp_config": {
+			"command": "node",
+			"args": ["${__dirname}/dist/mcp/index.js"],
+			"env": {
+				"X_BEARER_TOKEN": "${user_config.bearer_token}"
+			}
+		}
+	},
+	"user_config": {
+		"bearer_token": {
+			"type": "string",
+			"title": "X Bearer Token",
+			"description": "Your Twitter/X API v2 Bearer Token. Get one at https://developer.x.com/en/portal/dashboard",
+			"sensitive": true,
+			"required": true
+		}
+	},
+	"license": "MIT"
+}
