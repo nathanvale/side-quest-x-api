@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0
+
+### Minor Changes
+
+- [`db84122`](https://github.com/nathanvale/side-quest-x-api/commit/db84122dae8015b5067c71163d72c93d23b384b2) Thanks [@nathanvale](https://github.com/nathanvale)! - Add Claude Desktop Extension (.mcpb) for one-click install
+
 ## 0.1.1
 
 ### Patch Changes

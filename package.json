@@ -1,6 +1,6 @@
 {
 	"name": "@side-quest/x-api",
-	"version": "0.1.1",
+	"version": "0.2.0",
 	"description": "Read-only Twitter/X API v2 — tweets, threads, timelines, user profiles",
 	"author": {
 		"name": "Nathan Vale",
